@@ -236,6 +236,12 @@
     if (!badge) {
       badge = document.createElement('div');
       badge.className = 'x-trim-counter-badge';
+      const dot = document.createElement('span');
+      dot.className = 'x-trim-counter-dot';
+      const textSpan = document.createElement('span');
+      textSpan.className = 'x-trim-counter-text';
+      badge.appendChild(dot);
+      badge.appendChild(textSpan);
     }
 
     // Prefer inserting inside the bottom toolbar right next to the progress gauge / Post button,
@@ -265,12 +271,15 @@
     }
 
     badge.setAttribute('data-status', status);
-    badge.innerHTML = `<span class="x-trim-counter-dot"></span><span>${label}</span>`;
+    const textEl = badge.querySelector('.x-trim-counter-text');
+    if (textEl) {
+      textEl.textContent = label;
+    }
   }
 
   function renderHighlights(editorEl) {
     const container = ensureOverlayContainer();
-    container.innerHTML = '';
+    container.replaceChildren();
 
     if (!editorEl || !document.body.contains(editorEl)) {
       if (typeof CSS !== 'undefined' && CSS.highlights) {
