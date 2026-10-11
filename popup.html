@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>X Cutoff Highlighter</title>
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      width: 310px;
+      background: #0f1419;
+      color: #e7e9ea;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      padding: 16px;
+      font-size: 13px;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #2f3336;
+    }
+    .header h1 {
+      font-size: 15px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .badge {
+      background: rgba(244, 33, 46, 0.2);
+      color: #f4212e;
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+    .field {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .field label {
+      color: #eff3f4;
+      font-weight: 500;
+    }
+    .field small {
+      display: block;
+      color: #71767b;
+      font-size: 11px;
+      margin-top: 2px;
+    }
+    input[type="number"] {
+      width: 72px;
+      padding: 5px 8px;
+      border-radius: 6px;
+      border: 1px solid #2f3336;
+      background: #16181c;
+      color: #e7e9ea;
+      font-weight: 600;
+      text-align: right;
+    }
+    input[type="color"] {
+      width: 40px;
+      height: 28px;
+      border: 1px solid #2f3336;
+      border-radius: 6px;
+      background: #16181c;
+      cursor: pointer;
+    }
+    input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: #1d9bf0;
+      cursor: pointer;
+    }
+    .reset-btn {
+      width: 100%;
+      margin-top: 6px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid #2f3336;
+      background: #16181c;
+      color: #eff3f4;
+      font-weight: 600;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .reset-btn:hover {
+      background: #202327;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>280 Twitter Cutoff</h1>
+    <span class="badge">Premium</span>
+  </div>
+
+  <div class="field">
+    <div>
+      <label for="limit">Untrimmed Char Limit</label>
+      <small>Standard cutoff before "Show more"</small>
+    </div>
+    <input type="number" id="limit" min="50" max="1000" step="1" value="280" />
+  </div>
+
+  <div class="field">
+    <div>
+      <label for="highlightColor">Overflow Highlight Color</label>
+      <small>Tint on text past the cutoff</small>
+    </div>
+    <input type="color" id="highlightColor" value="#f4212e" />
+  </div>
+
+  <div class="field">
+    <div>
+      <label for="showBadge">Show Live Counter Pill</label>
+      <small>Displays remaining untrimmed chars</small>
+    </div>
+    <input type="checkbox" id="showBadge" checked />
+  </div>
+
+  <div class="field">
+    <div>
+      <label for="weightedCounting">X Weighted Counting</label>
+      <small>Emojis/CJK = 2 chars, URLs = 23 chars</small>
+    </div>
+    <input type="checkbox" id="weightedCounting" checked />
+  </div>
+
+  <button class="reset-btn" id="resetBtn">Reset to Defaults</button>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+/* CSS Custom Highlight API primary styling */
+::highlight(x-trimmed-overflow) {
+  background-color: var(--x-trim-bg, rgba(244, 33, 46, 0.25));
+}
+
+/* Floating overlay container for fallback visual highlight */
+.x-trim-overlay-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99999;
+  overflow: hidden;
+}
+
+.x-trim-rect {
+  position: fixed;
+  background-color: var(--x-trim-bg, rgba(244, 33, 46, 0.25));
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+/* Live Counter Badge inside Composer */
+.x-trim-counter-badge {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 5px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  margin: 6px 12px;
+  user-select: none;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+  position: relative;
+  z-index: 2;
+}
+
+.x-trim-counter-badge[data-status="safe"] {
+  background-color: rgba(0, 186, 124, 0.14);
+  color: #00ba7c;
+  border-color: rgba(0, 186, 124, 0.3);
+}
+
+.x-trim-counter-badge[data-status="near"] {
+  background-color: rgba(255, 212, 0, 0.15);
+  color: #ffd400;
+  border-color: rgba(255, 212, 0, 0.35);
+}
+
+.x-trim-counter-badge[data-status="over"] {
+  background-color: rgba(244, 33, 46, 0.18);
+  color: #f4212e;
+  border-color: rgba(244, 33, 46, 0.45);
+}
+
+.x-trim-counter-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
